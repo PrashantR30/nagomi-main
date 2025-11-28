@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagomi Africa | Japanese Gateway to Mauritius & Africa</title>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #2e1a47, #5a3d99);
+            --accent-color: #fbbf24;
+            --light-purple: #f3f0ff;
+            --dark-purple: #1f2937;
+            --medium-purple: #5a3d99;
+            --text-dark: #111827;
+            --text-light: #6b7280;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: min(100% - 2rem, 1200px);
+            margin-inline: auto;
+            padding-inline: 1rem;
+        }
+
+        /* Utilities */
+        .text-center { text-align: center; }
+        .text-white { color: white; }
+        .mb-3 { margin-bottom: 1rem; }
+        .mb-4 { margin-bottom: 1.5rem; }
+        .mb-5 { margin-bottom: 3rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 1rem; }
+        .mt-4 { margin-top: 1.5rem; }
+        .mt-5 { margin-top: 2rem; }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            font-weight: 700;
+            color: var(--dark-purple);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            max-width: 640px;
+            margin: 0.5rem auto 0;
+            color: var(--text-light);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 30px rgba(46, 26, 71, 0.1);
+            padding: 0.75rem 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brand-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar-brand {
+            font-size: clamp(1.3rem, 3vw, 1.7rem);
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: var(--medium-purple);
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .navbar-nav {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-link {
+            color: var(--dark-purple);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-link:hover {
+            color: var(--medium-purple);
+        }
+
+        .lang-toggle {
+            border-radius: 999px;
+            border: 1px solid rgba(90, 61, 153, 0.3);
+            padding: 0.35rem 0.75rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            background: white;
+            color: var(--medium-purple);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5rem 1rem 2rem;
+            background: linear-gradient(135deg, rgba(34, 28, 74, 0.85), rgba(22, 101, 184, 0.7)),
+                        url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero-inner {
+            width: min(90vw, 960px);
+            max-width: 960px;
+            margin-inline: auto;
+        }
+
+        .hero-content {
+            padding: clamp(2rem, 5vw, 3rem);
+            background: rgba(15, 23, 42, 0.72);
+            backdrop-filter: blur(18px);
+            border-radius: clamp(16px, 3vw, 24px);
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.55);
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            font-size: 0.78rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: #e5e7eb;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5.2vw, 3.2rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+            background: linear-gradient(135deg, #ffffff 0%, #fbbf24 55%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: 1.75rem;
+            opacity: 0.95;
+            color: #e5e7eb;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: #cbd5f5;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .investment-stats-hero {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-box-hero {
+            padding: 1rem;
+            border-radius: 14px;
+            background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.16), transparent 55%),
+                        rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.6);
+        }
+
+        .stat-number-hero {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .stat-label-hero {
+            font-size: 0.8rem;
+            color: #e5e7eb;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0.25rem 0.5rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-color), #f59e0b);
+            color: var(--dark-purple);
+            box-shadow: 0 8px 22px rgba(251, 191, 36, 0.45);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(251, 191, 36, 0.65);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(229, 231, 235, 0.9);
+            color: white;
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark-purple);
+            transform: translateY(-3px);
+        }
+
+        /* Section wrapper */
+        .pillar-section {
+            padding: clamp(80px, 12vw, 120px) 0;
+        }
+
+        .pillar-section:nth-child(even) {
+            background: var(--light-purple);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: clamp(70px, 10vw, 100px) 0;
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+            gap: clamp(1.5rem, 4vw, 3rem);
+            margin-top: 2rem;
+        }
+
+        .about-card {
+            background: #f9fafb;
+            border-radius: 18px;
+            padding: 1.75rem 1.75rem 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .about-label {
+            display: inline-block;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--medium-purple);
+            margin-bottom: 0.4rem;
+        }
+
+        .about-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--dark-purple);
+        }
+
+        .about-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .about-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .about-list li {
+            margin-bottom: 0.4rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .about-list li span {
+            color: var(--medium-purple);
+            margin-top: 0.15rem;
+        }
+
+        /* Pillar Cards */
+        .pillar-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .pillar-card:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .pillar-card:nth-child(even) .pillar-content {
+            order: 2;
+        }
+
+        .pillar-content h2 {
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            font-weight: 700;
+            color: var(--dark-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar-tagline {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--medium-purple);
+            margin-bottom: 0.8rem;
+        }
+
+        .pillar-content p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .pillar-image {
+            width: 100%;
+            height: 380px;
+            border-radius: 20px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.2);
+        }
+
+        .africa-entry-bg {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.22), rgba(15,23,42,0.55)),
+                url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1450&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .facilitation-bg {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.25), rgba(15,23,42,0.5)),
+                url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80');
+        }
+
+        .manufacturing-bg {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.25), rgba(15,23,42,0.5)),
+                url('https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=1200&q=80');
+        }
+
+        .energy-bg {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.25), rgba(15,23,42,0.5)),
+                url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80');
+        }
+
+        .ai-bg {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.25), rgba(15,23,42,0.5)),
+                url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80');
+        }
+
+        .aquaculture-bg {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.25), rgba(15,23,42,0.5)),
+                url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=1200&q=80');
+        }
+
+        .investment-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .highlight-item {
+            background: white;
+            padding: 1.25rem 1.4rem;
+            border-radius: 14px;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 5px 15px rgba(15, 23, 42, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(15, 23, 42, 0.14);
+        }
+
+        .highlight-item h4 {
+            color: var(--dark-purple);
+            font-weight: 600;
+            margin-bottom: 0.45rem;
+            font-size: 1rem;
+        }
+
+        .highlight-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .investment-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0 1.5rem;
+            padding: 1.5rem 1.75rem;
+            border-radius: 16px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .stat-number {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .pillar-cta-note {
+            font-size: 0.86rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Engagement Model */
+        .engagement-section {
+            padding: clamp(70px, 10vw, 100px) 0;
+            background: #0b1120;
+            color: white;
+        }
+
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+            gap: clamp(1.5rem, 4vw, 3rem);
+            margin-top: 2rem;
+        }
+
+        .engagement-step {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 16px;
+            padding: 1.4rem 1.5rem 1.2rem;
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            margin-bottom: 0.75rem;
+        }
+
+        .step-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #a5b4fc;
+            margin-bottom: 0.25rem;
+        }
+
+        .engagement-step h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .engagement-step p {
+            font-size: 0.9rem;
+            color: #e5e7eb;
+        }
+
+        .engagement-list {
+            font-size: 0.9rem;
+            color: #e5e7eb;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .engagement-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .engagement-list li span {
+            color: var(--accent-color);
+            margin-top: 0.1rem;
+        }
+
+        .engagement-note {
+            font-size: 0.85rem;
+            color: #e5e7eb;
+            opacity: 0.9;
+            margin-top: 0.75rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary-gradient);
+            color: white;
+            padding: clamp(60px, 10vw, 100px) 0;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.96);
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 800px;
+            margin-inline: auto;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.4);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            color: var(--dark-purple);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--light-purple);
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--medium-purple);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #020617;
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer h5 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            color: #e5e7eb;
+        }
+
+        .footer a {
+            color: rgba(248, 250, 252, 0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(148, 163, 184, 0.4);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .navbar-nav {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pillar-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .pillar-card:nth-child(even) .pillar-content {
+                order: 1;
+            }
+
+            .pillar-image {
+                height: 280px;
+            }
+
+            .navbar-right {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <div class="brand-block">
+                    <a href="#home" class="navbar-brand">Nagomi Africa</a>
+                    <span class="brand-subtitle">Your Japanese Gateway to Mauritius & Africa</span>
+                </div>
+                <div class="navbar-right">
+                    <ul class="navbar-nav">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#africa-entry" class="nav-link">Africa Entry</a></li>
+                        <li><a href="#facilitation" class="nav-link">Facilitation</a></li>
+                        <li><a href="#manufacturing" class="nav-link">Manufacturing</a></li>
+                        <li><a href="#energy" class="nav-link">Energy</a></li>
+                        <li><a href="#ai" class="nav-link">AI & Tech</a></li>
+                        <li><a href="#aquaculture" class="nav-link">Aquaculture</a></li>
+                        <li><a href="#engagement" class="nav-link">How We Work</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <button class="lang-toggle" type="button" title="Japanese version coming soon">日本語</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🇯🇵 Nagomi Africa</span> · <span>Japan → Mauritius → Africa</span>
+                </div>
+                <h1 class="hero-title">Japanese Investment & Technology Gateway to Mauritius and Africa</h1>
+                <p class="hero-subtitle">
+                    Nagomi Africa supports Japanese companies to test, establish, and scale operations from Mauritius into
+                    high-growth African markets — with trusted local partners, clear governance, and structured execution.
+                </p>
+
+                <div class="hero-meta">
+                    <span>✔ Africa market entry & facilitation</span>
+                    <span>✔ Pilot projects in energy, AI, blue economy</span>
+                    <span>✔ Mauritius-based, Japan-focused</span>
+                </div>
+
+                <div class="investment-stats-hero">
+                    <div class="stat-box-hero">
+                        <span class="stat-number-hero">54</span>
+                        <span class="stat-label-hero">African countries reachable via Mauritius</span>
+                    </div>
+                    <div class="stat-box-hero">
+                        <span class="stat-number-hero">1.3B</span>
+                        <span class="stat-label-hero">Consumers across the continent</span>
+                    </div>
+                    <div class="stat-box-hero">
+                        <span class="stat-number-hero">2.3M</span>
+                        <span class="stat-label-hero">km² Exclusive Economic Zone (EEZ)</span>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="#africa-entry" class="btn btn-primary">Explore Investment Pillars</a>
+                    <a href="#contact" class="btn btn-outline">Schedule Executive Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Nagomi Africa -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">About Nagomi Africa</h2>
+                <p class="section-subtitle">
+                    We act as a calm, trusted bridge –「和 / nagomi」– between Japanese decision-makers and real, executable
+                    opportunities in Mauritius and wider African markets.
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <div>
+                    <div class="about-card">
+                        <span class="about-label">Who we are</span>
+                        <h3>Mauritius-based, Japan-focused investment facilitation office</h3>
+                        <p>
+                            Nagomi Africa is an independent advisory and facilitation partner headquartered in Mauritius.
+                            We support Japanese companies and investors to move from “interest” to “implementation” in
+                            Africa – with Mauritius as a stable, bilingual, and business-friendly base.
+                        </p>
+                        <ul class="about-list mt-3">
+                            <li><span>•</span><span>Focus on renewable energy, AI & digital, advanced manufacturing, and blue economy.</span></li>
+                            <li><span>•</span><span>Experience working across East, Southern, and Indian Ocean African markets.</span></li>
+                            <li><span>•</span><span>Bridge culture, regulation, and execution between Japan, Mauritius, and Africa.</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="about-card">
+                        <span class="about-label">How we help</span>
+                        <h3>From first conversation to market-ready operations</h3>
+                        <ul class="about-list">
+                            <li><span>1.</span><span><strong>Discovery & Alignment</strong> – clarify sector focus, risk appetite, and timelines.</span></li>
+                            <li><span>2.</span><span><strong>Feasibility & Partner Scouting</strong> – identify realistic entry paths and counterparties.</span></li>
+                            <li><span>3.</span><span><strong>Pilot & Proof-of-Concept</strong> – structure pilots in Mauritius with clear KPIs.</span></li>
+                            <li><span>4.</span><span><strong>Scale Across Africa</strong> – leverage Mauritius treaties, networks, and structures to expand.</span></li>
+                        </ul>
+                        <p class="mt-3" style="font-size:0.9rem; color:var(--text-light);">
+                            We are not a mass-market portal. We work selectively with Japanese partners who value long-term,
+                            transparent relationships and structured execution.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gateway to African Markets -->
+    <section id="africa-entry" class="pillar-section">
+        <div class="container">
+            <div class="pillar-card">
+                <div class="pillar-content">
+                    <div class="pillar-tagline">Investment Pillar 1 · Market Access</div>
+                    <h2>Gateway to African Markets</h2>
+                    <p>
+                        Mauritius serves as a strategic, stable entry point for Japanese companies to reach 1.3 billion African
+                        consumers. With strong financial services, trade agreements, and bilingual talent, it is an ideal hub
+                        for headquarters, holding structures, and regional coordination.
+                    </p>
+
+                    <div class="investment-highlights">
+                        <div class="highlight-item">
+                            <h4>Market Access Treaties</h4>
+                            <p>COMESA, SADC, and AfCFTA providing preferential access to key African economies.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Financial Hub</h4>
+                            <p>Sophisticated banking and fund services with African transaction experience.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Cultural Bridge</h4>
+                            <p>Multicultural, English/French-speaking society with deep African connections.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Trade Finance</h4>
+                            <p>Specialized trade finance facilities for import/export and project financing.</p>
+                        </div>
+                    </div>
+
+                    <div class="investment-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">54</span>
+                            <span class="stat-label">African Countries</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">1.3B</span>
+                            <span class="stat-label">Consumers</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">40+</span>
+                            <span class="stat-label">Tax Treaties</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">Discuss Your Africa Entry Strategy</a>
+                    <div class="pillar-cta-note">
+                        Suitable for trading houses, energy developers, manufacturers, and technology providers planning
+                        multi-country expansion.
+                    </div>
+                </div>
+                <div class="pillar-image africa-entry-bg"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Africa Entry Facilitation Services -->
+    <section id="facilitation" class="pillar-section">
+        <div class="container">
+            <div class="pillar-card">
+                <div class="pillar-content">
+                    <div class="pillar-tagline">Investment Pillar 2 · Structured Facilitation</div>
+                    <h2>Africa Entry Facilitation Services</h2>
+                    <p>
+                        Entering multiple African markets from Japan can feel complex. Nagomi Africa provides structured,
+                        on-the-ground facilitation – from regulatory navigation and local partners to banking, culture, and
+                        risk management.
+                    </p>
+
+                    <div class="investment-highlights">
+                        <div class="highlight-item">
+                            <h4>Regulatory Compliance</h4>
+                            <p>Guidance on permits, licenses, and compliance requirements in target countries.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Local Partnership Development</h4>
+                            <p>Introductions to vetted distributors, integrators, and joint-venture partners.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Cultural & Language Support</h4>
+                            <p>Business etiquette advice and bridging for Japan–Mauritius–Africa interactions.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Market Research & Intelligence</h4>
+                            <p>Practical, decision-oriented insights on demand, competition, and pricing.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Banking & Finance Setup</h4>
+                            <p>Facilitation of accounts, payment rails, and transaction structures.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Supply Chain & Logistics</h4>
+                            <p>Support with warehousing, shipping routes, and distribution planning.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Government Relations</h4>
+                            <p>Engagement with relevant ministries and public sector stakeholders.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Risk Management</h4>
+                            <p>Political risk assessment and insurance / mitigation options.</p>
+                        </div>
+                    </div>
+
+                    <div class="investment-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">25+</span>
+                            <span class="stat-label">Countries Covered</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">90%</span>
+                            <span class="stat-label">Facilitated Projects Success Rate*</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">6</span>
+                            <span class="stat-label">Months Typical On-Ground Setup</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">Request Facilitation Discussion</a>
+                    <div class="pillar-cta-note">
+                        *Indicative for similar facilitation projects; actual results depend on sector, timing, and counterparties.
+                    </div>
+                </div>
+                <div class="pillar-image facilitation-bg"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Manufacturing Hub -->
+    <section id="manufacturing" class="pillar-section">
+        <div class="container">
+            <div class="pillar-card">
+                <div class="pillar-content">
+                    <div class="pillar-tagline">Investment Pillar 3 · Production & Processing</div>
+                    <h2>Advanced Manufacturing Hub</h2>
+                    <p>
+                        Mauritius offers modern industrial parks, favorable tax conditions, and efficient port access,
+                        making it a strong base for assembly, light manufacturing, and processing aimed at African and
+                        global markets.
+                    </p>
+
+                    <div class="investment-highlights">
+                        <div class="highlight-item">
+                            <h4>Industrial Zones</h4>
+                            <p>Ready-to-use zones with power, water, telecom, and logistics connectivity.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Port & Air Access</h4>
+                            <p>Container port and air cargo routes connecting Africa, Europe, Middle East, and Asia.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Skilled Workforce</h4>
+                            <p>Bilingual, trainable workforce with experience in manufacturing and services.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Export Incentives</h4>
+                            <p>Access to preferential EU/US/Africa markets under various trade frameworks.</p>
+                        </div>
+                    </div>
+
+                    <div class="investment-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">15%</span>
+                            <span class="stat-label">Corporate Tax</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">48</span>
+                            <span class="stat-label">Hours for Basic Incorporation</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Foreign Ownership Allowed</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">Explore Manufacturing Scenarios</a>
+                    <div class="pillar-cta-note">
+                        Relevant for equipment assembly, component production, agro-processing, and high-value niche manufacturing.
+                    </div>
+                </div>
+                <div class="pillar-image manufacturing-bg"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Renewable Energy Hub -->
+    <section id="energy" class="pillar-section">
+        <div class="container">
+            <div class="pillar-card">
+                <div class="pillar-content">
+                    <div class="pillar-tagline">Investment Pillar 4 · Clean Energy & Storage</div>
+                    <h2>Renewable Energy Hub</h2>
+                    <p>
+                        With targets of 60% renewable energy by 2030 and strong policy support, Mauritius is an ideal
+                        testbed for Japanese solar, wind, ocean energy, and storage solutions – with direct scalability
+                        into African markets facing similar challenges.
+                    </p>
+
+                    <div class="investment-highlights">
+                        <div class="highlight-item">
+                            <h4>Solar Energy</h4>
+                            <p>Year-round sunlight and government incentives for rooftop, ground-mount, and transparent PV.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Ocean & Wind</h4>
+                            <p>2.3M km² EEZ suitable for wave, OTEC, and offshore/onshore wind demonstrations.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Energy Storage</h4>
+                            <p>Growing need for grid-scale and behind-the-meter storage solutions.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Green Hydrogen</h4>
+                            <p>Early-stage opportunities to combine renewables with hydrogen pilot projects.</p>
+                        </div>
+                    </div>
+
+                    <div class="investment-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">60%</span>
+                            <span class="stat-label">Renewable Target by 2030</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">300+</span>
+                            <span class="stat-label">Sunny Days per Year</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">2.3M</span>
+                            <span class="stat-label">km² EEZ for Pilots</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">Discuss Energy Pilot Concepts</a>
+                    <div class="pillar-cta-note">
+                        Ideal for Japanese renewable developers, technology OEMs, storage providers, and trading houses.
+                    </div>
+                </div>
+                <div class="pillar-image energy-bg"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI & Technology Innovation -->
+    <section id="ai" class="pillar-section">
+        <div class="container">
+            <div class="pillar-card">
+                <div class="pillar-content">
+                    <div class="pillar-tagline">Investment Pillar 5 · Digital & AI</div>
+                    <h2>AI & Technology Innovation</h2>
+                    <p>
+                        Mauritius is emerging as a digital and services hub for the Indian Ocean and African region. With
+                        strong connectivity, 5G rollout, and a tech-savvy workforce, it is a practical base for AI pilots,
+                        R&D, and digital services aimed at African markets.
+                    </p>
+
+                    <div class="investment-highlights">
+                        <div class="highlight-item">
+                            <h4>Robotics & Automation</h4>
+                            <p>Opportunities in industrial automation and service robots in manufacturing and logistics.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Smart Agriculture</h4>
+                            <p>AI-driven precision farming and sensor-based solutions for tropical crops.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Fintech & Payments</h4>
+                            <p>Digital wallets, cross-border payments, and AI-powered financial services.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Cloud & Data</h4>
+                            <p>Data center and edge deployments serving Africa and Asia from a neutral, stable base.</p>
+                        </div>
+                    </div>
+
+                    <div class="investment-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">5G</span>
+                            <span class="stat-label">Network Coverage Rolling Out</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">85%</span>
+                            <span class="stat-label">Internet Penetration*</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Tech & Innovation Parks</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">Explore AI & Digital Opportunities</a>
+                    <div class="pillar-cta-note">
+                        Suitable for software, AI, fintech, agritech, and service robotics players seeking scalable pilots.
+                    </div>
+                </div>
+                <div class="pillar-image ai-bg"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blue Economy & Aquaculture -->
+    <section id="aquaculture" class="pillar-section">
+        <div class="container">
+            <div class="pillar-card">
+                <div class="pillar-content">
+                    <div class="pillar-tagline">Investment Pillar 6 · Blue Economy</div>
+                    <h2>Blue Economy & Aquaculture</h2>
+                    <p>
+                        With one of the largest EEZs in the Indian Ocean, Mauritius offers unique opportunities in sustainable
+                        aquaculture, seaweed and algae, and marine technologies – areas where Japanese know-how is globally
+                        recognized.
+                    </p>
+
+                    <div class="investment-highlights">
+                        <div class="highlight-item">
+                            <h4>Fish Farming</h4>
+                            <p>Marine cage culture and inland systems aligned with sustainability and traceability.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Seaweed & Algae</h4>
+                            <p>Potential for food, cosmetics, nutraceuticals, and bio-materials from marine resources.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Marine Technology</h4>
+                            <p>Underwater monitoring, robotics, and sustainable fishing technologies.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>Processing & Value-Addition</h4>
+                            <p>Certified processing facilities for export to Japan, Europe, and beyond.</p>
+                        </div>
+                    </div>
+
+                    <div class="investment-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">2.3M</span>
+                            <span class="stat-label">km² Exclusive Economic Zone</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">15,000</span>
+                            <span class="stat-label">Tons Fish/Year*</span>
+                        </div>
+                            <div class="stat-box">
+                            <span class="stat-number">25°C</span>
+                            <span class="stat-label">Average Sea Temperature</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">Discuss Blue Economy Concepts</a>
+                    <div class="pillar-cta-note">
+                        Strong fit for Japanese aquaculture, seaweed, marine instrumentation, and food processing companies.
+                    </div>
+                </div>
+                <div class="pillar-image aquaculture-bg"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engagement Model -->
+    <section id="engagement" class="engagement-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title text-white">How We Work with Japanese Partners</h2>
+                <p class="section-subtitle text-white">
+                    A structured, low-friction engagement model designed for boards, investment committees, and executive teams
+                    who need clarity, documentation, and predictable steps.
+                </p>
+            </div>
+
+            <div class="engagement-grid">
+                <div>
+                    <div class="engagement-step">
+                        <div class="step-label">Phase 1</div>
+                        <h3>Exploration Call (No Obligation)</h3>
+                        <p>
+                            45–60 minute call to understand your priorities, sectors, timelines, and risk appetite.
+                            We provide initial feedback on feasibility from a Mauritius & Africa perspective.
+                        </p>
+                    </div>
+                    <div class="engagement-step">
+                        <div class="step-label">Phase 2</div>
+                        <h3>Scoping & Short Memo</h3>
+                        <p>
+                            We prepare a short memo (English, with Japanese summary if required) outlining possible entry
+                            paths, required licenses, and next steps, tailored to one or two priority markets.
+                        </p>
+                    </div>
+                    <div class="engagement-step">
+                        <div class="step-label">Phase 3</div>
+                        <h3>Pilot / Structure Design</h3>
+                        <p>
+                            Design of pilot in Mauritius or selected African country, including counterparties, timeline,
+                            data to be collected, and exit / scale-up options.
+                        </p>
+                    </div>
+                    <div class="engagement-step">
+                        <div class="step-label">Phase 4</div>
+                        <h3>Implementation & Scale</h3>
+                        <p>
+                            Support for incorporation, contracts, operations, and gradual scaling into additional African markets.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="engagement-step">
+                        <div class="step-label">Typical collaboration</div>
+                        <h3>Designed for boards & HQ teams</h3>
+                        <ul class="engagement-list mt-2">
+                            <li><span>•</span><span><strong>Reporting style:</strong> concise documents that can be shared internally in Japan.</span></li>
+                            <li><span>•</span><span><strong>Communication:</strong> English as primary; Japanese summaries can be arranged.</span></li>
+                            <li><span>•</span><span><strong>Time zones:</strong> meetings scheduled for Japan–Mauritius convenience.</span></li>
+                            <li><span>•</span><span><strong>Confidentiality:</strong> NDAs and clear information-handling practices.</span></li>
+                        </ul>
+                        <p class="engagement-note">
+                            Commercial terms are agreed transparently per phase (fixed fee, success-based, or hybrid).
+                            Initial exploration call and high-level fit assessment are free of charge.
+                        </p>
+                        <div class="mt-3">
+                            <a href="#contact" class="btn btn-primary">Schedule an Exploration Call</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title text-white">Ready to Explore Mauritius & Africa with Nagomi Africa?</h2>
+                <p class="section-subtitle text-white">
+                    Share your sector, investment horizon, and level of interest. Our team will respond with proposed times
+                    for an initial discussion and, if useful, a short follow-up memo.
+                </p>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="company" class="form-label">Company Name *</label>
+                        <input type="text" class="form-control" id="company" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact" class="form-label">Contact Person *</label>
+                        <input type="text" class="form-control" id="contact" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address *</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sector" class="form-label">Primary Interest Area *</label>
+                        <select class="form-control" id="sector" required>
+                            <option value="">Select Area</option>
+                            <option value="africa-entry">Gateway to African Markets</option>
+                            <option value="facilitation">Africa Entry Facilitation</option>
+                            <option value="manufacturing">Advanced Manufacturing</option>
+                            <option value="energy">Renewable Energy</option>
+                            <option value="ai-tech">AI & Technology</option>
+                            <option value="aquaculture">Blue Economy & Aquaculture</option>
+                            <option value="multiple">Multiple Areas</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="form-label">Context & Questions *</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Example: We are a Japanese company in [sector]. We are considering [type of project] within [timeframe]. Our key questions are..." required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Request Investment Consultation</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h5>Nagomi Africa</h5>
+                    <p>
+                        Level 3, Alexander House<br>
+                        Cybercity, Ebène<br>
+                        Mauritius 72201
+                    </p>
+                    <p>Your Japanese Gateway to Mauritius & Africa.</p>
+                </div>
+                <div>
+                    <h5>Contact</h5>
+                    <p>
+                        <a href="mailto:hello@nagomiafrica.com">hello@nagomiafrica.com</a><br>
+                        <a href="tel:+2302547890">+230 254 7890 (Mauritius)</a><br>
+                        <a href="tel:+81332345678">+81 3 2345 6678 (Tokyo liaison)</a>
+                    </p>
+                </div>
+                <div>
+                    <h5>Focus Areas</h5>
+                    <p>
+                        <a href="#africa-entry">Africa Market Entry</a><br>
+                        <a href="#facilitation">Entry Facilitation</a><br>
+                        <a href="#energy">Clean Energy & Storage</a><br>
+                        <a href="#ai">AI & Digital</a><br>
+                        <a href="#aquaculture">Blue Economy</a>
+                    </p>
+                </div>
+                <div>
+                    <h5>Working Style</h5>
+                    <p>
+                        Executive-level briefings<br>
+                        Clear documentation<br>
+                        Phase-based collaboration<br>
+                        Japan-friendly communication
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p id="footerCopyright">
+                    &copy; 2024 Nagomi Africa. Connecting Japanese innovation to Mauritius & African markets.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form handling with sector-specific messaging
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const sector = document.getElementById('sector').value;
+            const sectorMessages = {
+                'africa-entry': 'Thank you for your interest in Africa market entry. The Nagomi Africa team will prepare an initial view and propose times for a call.',
+                'facilitation': 'Thank you for your interest in entry facilitation. We will contact you to discuss next steps, timelines, and countries of interest.',
+                'manufacturing': 'Thank you for your interest in manufacturing in Mauritius. We will connect you with our industrial and logistics advisors.',
+                'energy': 'Thank you for your interest in renewable energy. We will respond with potential pilot or project structures.',
+                'ai-tech': 'Thank you for your interest in AI & technology. Our team will share ideas for pilots and digital services from Mauritius.',
+                'aquaculture': 'Thank you for your interest in blue economy and aquaculture. We will follow up with possible concepts and locations.',
+                'multiple': 'Thank you for your multi-pillar interest. We will coordinate an initial call to structure the discussion across all relevant areas.'
+            };
+
+            const requiredFields = this.querySelectorAll('[required]');
+            let valid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = '#ef4444';
+                    valid = false;
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+
+            if (valid) {
+                const message = sectorMessages[sector] || 'Thank you for contacting Nagomi Africa. We will get back to you with proposed times for an initial discussion.';
+                alert(message);
+                this.reset();
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (!target) return;
+                e.preventDefault();
+                const offsetTop = target.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                    navbar.style.padding = '0.5rem 0';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.96)';
+                    navbar.style.padding = '0.75rem 0';
+                }
+            }
+        });
+
+        // Dynamic year in footer
+        (function () {
+            const year = new Date().getFullYear();
+            const footer = document.getElementById('footerCopyright');
+            if (footer) {
+                footer.innerHTML = footer.innerHTML.replace('2024', year);
+            }
+        })();
+    </script>
+</body>
+</html>
+
